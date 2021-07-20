@@ -1,10 +1,19 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { IconProp, library, SizeProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import React from 'react';
 
 library.add(faExclamationTriangle);
 
-export default function Notice({ faIcon, faIconSize = "3x", noticeType, header, content, children }) {
+interface NoticeProps extends React.HTMLProps<React.ReactElement> {
+    faIcon: IconProp;
+    faIconSize: SizeProp;
+    noticeType: string;
+    header: string;
+    content: string;
+}
+
+export default function Notice({ faIcon, faIconSize = "3x", noticeType, header, content, children }: NoticeProps) {
     let colorClass = ""
 
     switch (noticeType) {
