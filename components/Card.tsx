@@ -1,7 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link';
 
-export default function Card({ id, title, preview, datetime, cover }) {
+interface CardProps {
+    id: string;
+    title: string;
+    preview: string;
+    datetime: Date;
+    cover?: string;
+}
+
+export default function Card({ id, title, preview, datetime, cover }: CardProps) {
     return (
         <div className="flex items-center p-4 rounded-lg shadow-md py-2 bg-white border border-blue-500">
             {cover && <Image

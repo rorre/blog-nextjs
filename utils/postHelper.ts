@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { PostData } from './types/Post'
 
 function getPostIds() {
     const postsDirectory = path.join(process.cwd(), 'posts')
@@ -34,7 +35,7 @@ function getPostData(filename) {
         filePath,
         previewParagraph,
         content: matterResult.content,
-        ...matterResult.data,
+        ...matterResult.data as PostData,
     }
 }
 
