@@ -1,3 +1,4 @@
+import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head'
 import { getPostData, getPostIds } from '../../utils/postHelper'
 import styles from '../../components/post/post.module.css'
@@ -31,14 +32,14 @@ export default function Post({ postData }) {
     )
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async function ({ params }) {
     const postData = getPostData(params.id + ".md")
     return {
         props: { postData }
     }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async function () {
     const paths = getPostIds()
     return {
         paths,
