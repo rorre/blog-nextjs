@@ -1,13 +1,14 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { getPostData, getPostIds } from '../../utils/postHelper'
 import styles from '../../components/post/post.module.css'
-import Markdown from 'markdown-to-jsx';
+import Markdown from 'markdown-to-jsx'
 import Notice from '../../components/post/Notice'
+
 export default function Post({ postData }) {
     const mdOverrides = {
         Notice: {
-            component: Notice
+            component: Notice,
         },
     }
 
@@ -25,7 +26,7 @@ export default function Post({ postData }) {
                 // eslint-disable-next-line react/no-children-prop
                 children={postData.content}
                 options={{
-                    overrides: mdOverrides
+                    overrides: mdOverrides,
                 }}
             />
         </div>
@@ -33,9 +34,9 @@ export default function Post({ postData }) {
 }
 
 export const getStaticProps: GetStaticProps = async function ({ params }) {
-    const postData = getPostData(params.id + ".md")
+    const postData = getPostData(params.id + '.md')
     return {
-        props: { postData }
+        props: { postData },
     }
 }
 
@@ -43,6 +44,6 @@ export const getStaticPaths: GetStaticPaths = async function () {
     const paths = getPostIds()
     return {
         paths,
-        fallback: false
+        fallback: false,
     }
 }
