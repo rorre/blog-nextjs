@@ -4,11 +4,27 @@ import _ from 'lodash'
 import React from 'react'
 import { Post } from '../utils/types/Post'
 import PostRow from '../components/PostRow'
+import { NextSeo } from 'next-seo'
 
 function Blog({ posts }: { posts: Post[] }) {
     const chunkedPosts = _.chunk(posts, 2)
     return (
         <div>
+            <NextSeo
+                title="Blog | Index"
+                description="Everything related to osu!, code, or just Ren's life in general."
+                openGraph={{
+                    type: 'website',
+                    url: 'https://blog.rorre.xyz/',
+                    title: 'Blog | Index',
+                    description: "Everything related to osu!, code, or just Ren's life in general.",
+                }}
+                twitter={{
+                    cardType: 'summary',
+                    site: 'https://blog.rorre.xyz/',
+                }}
+            />
+
             <Head>
                 <title>Blog | Index</title>
             </Head>

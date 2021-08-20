@@ -4,8 +4,10 @@ import { getPostData, getPostIds } from '../../utils/postHelper'
 import styles from '../../components/post/post.module.css'
 import Markdown from 'markdown-to-jsx'
 import Notice from '../../components/post/Notice'
+import { NextSeo } from 'next-seo'
+import { Post } from '../../utils/types/Post'
 
-export default function Post({ postData }) {
+export default function Post({ postData }: { postData: Post }) {
     const mdOverrides = {
         Notice: {
             component: Notice,
@@ -14,8 +16,23 @@ export default function Post({ postData }) {
 
     return (
         <div>
+            <NextSeo
+                title={`Blog | ${postData.Title}`}
+                description={postData.previewParagraph}
+                openGraph={{
+                    type: 'website',
+                    url: `https://rorre.xyz/post/${postData.Slug}`,
+                    title: '`Blog | ${postData.Title} `}',
+                    description: postData.previewParagraph,
+                }}
+                twitter={{
+                    cardType: 'summary',
+                    site: `https://rorre.xyz/post/${postData.Slug}`,
+                }}
+            />
+
             <Head>
-                <title>Blog | {postData.Title} </title>
+                <title>Blog | {postData.Title}</title>
             </Head>
             <h2 className="text-4xl font-bold">{postData.Title}</h2>
             <p>Posted on {postData.Date}</p>
