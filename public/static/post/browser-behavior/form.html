@@ -1,0 +1,24 @@
+<body>
+    <form id="exForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <button id="submitBtn" type="submit">Submit</button>
+    </form>
+
+    <script>
+        var nameInput = document.getElementById("name")
+        var submitBtn = document.getElementById("submitBtn")
+        var form = document.getElementById("exForm")
+        form.onsubmit = onFormSubmit
+
+        submitBtn.addEventListener("click", function (ev) {
+            this.setAttribute("disabled", true)
+        })
+
+        function onFormSubmit(e) {
+            e.preventDefault()
+            e.stopPropagation()
+            alert(`Hello, ${nameInput.value}!`)
+        }
+    </script>
+</body>
