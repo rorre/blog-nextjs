@@ -22,7 +22,7 @@ export default function Post({ postData }: { postData: PostType }) {
                 openGraph={{
                     type: 'website',
                     url: `https://rorre.xyz/post/${postData.Slug}`,
-                    title: '`Blog | ${postData.Title} `}',
+                    title: `Blog | ${postData.Title} `,
                     description: postData.previewParagraph,
                 }}
                 twitter={{
