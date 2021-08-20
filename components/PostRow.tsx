@@ -9,13 +9,9 @@ interface PostRowProps extends React.HTMLProps<HTMLElement> {
 
 export default function PostRow({ rowKey, posts }: PostRowProps) {
     return (
-        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 py-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 space-y-4 md:space-y-0 md:space-x-4 py-2">
             {posts.map((post, idx) => {
-                return (
-                    <div key={`${rowKey}-${idx}`} className="flex-1">
-                        <Card id={post.Slug} title={post.Title} preview={post.previewParagraph} datetime={post.Date} />
-                    </div>
-                )
+                return <Card id={post.Slug} title={post.Title} preview={post.previewParagraph} datetime={post.Date} />
             })}
         </div>
     )
