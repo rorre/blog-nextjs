@@ -5,9 +5,9 @@ import styles from '../../components/post/post.module.css'
 import Markdown from 'markdown-to-jsx'
 import Notice from '../../components/post/Notice'
 import { NextSeo } from 'next-seo'
-import { Post } from '../../utils/types/Post'
+import { Post as PostType } from '../../utils/types/Post'
 
-export default function Post({ postData }: { postData: Post }) {
+export default function Post({ postData }: { postData: PostType }) {
     const mdOverrides = {
         Notice: {
             component: Notice,
