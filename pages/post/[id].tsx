@@ -7,10 +7,22 @@ import Notice from '../../components/post/Notice'
 import { NextSeo } from 'next-seo'
 import { Post as PostType } from '../../utils/types/Post'
 
+const TableWrapper: React.FC<React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableElement>, HTMLTableElement>> = ({
+    children,
+    ...props
+}) => (
+    <div className="overflow-x-auto">
+        <table {...props}>{children}</table>
+    </div>
+)
+
 export default function Post({ postData }: { postData: PostType }) {
     const mdOverrides = {
         Notice: {
             component: Notice,
+        },
+        table: {
+            component: TableWrapper,
         },
     }
 
