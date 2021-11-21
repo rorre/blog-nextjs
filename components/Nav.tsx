@@ -23,12 +23,6 @@ export default function Nav() {
             ) : (
                 <div></div>
             )}
-
-            <Link href="/personal">
-                <div className="ml-auto">
-                    <FontAwesomeIcon icon={faLock} color={useDark ? 'white' : 'black'} />
-                </div>
-            </Link>
         </div>
     )
 }
