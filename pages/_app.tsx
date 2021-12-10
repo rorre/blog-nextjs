@@ -17,9 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     }, [])
 
     return (
-        <div className={router.pathname.startsWith('/personal') ? 'dark' : ''}>
+        <div className="bg-gray-800 text-white">
             <Nav />
-            <div className="container dark:bg-gray-800 dark:text-white py-8 px-8 sm:px-16 md:px-32 ">
+            <div className="container py-8 px-8 sm:px-16 md:px-32 ">
                 <Component {...pageProps} />
             </div>
         </div>
