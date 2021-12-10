@@ -33,7 +33,7 @@ export default function Notice({ faIcon, faIconSize = '3x', noticeType, header, 
     return (
         <div
             className={`flex flex-col md:flex-row items-center justify-center
-                        p-4 rounded-lg shadow-md bg-white border ${colorClass}
+                        p-4 rounded-lg shadow-md border ${colorClass}
                         space-x-4 space-y-4 md:space-y-0`}
         >
             {faIcon && <FontAwesomeIcon icon={faIcon} size={faIconSize} />}
