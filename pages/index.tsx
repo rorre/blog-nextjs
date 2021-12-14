@@ -32,7 +32,7 @@ function Blog({ posts }: { posts: Post[] }) {
 }
 
 export async function getStaticProps() {
-    const posts = getPosts()
+    const posts = getPosts().slice(0, 10)
 
     return {
         props: {
