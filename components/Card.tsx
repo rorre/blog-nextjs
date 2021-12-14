@@ -11,7 +11,7 @@ interface CardProps {
 
 export default function Card({ id, title, preview, datetime, cover }: CardProps) {
     return (
-        <div className="flex flex-col p-4 rounded-lg shadow-md py-2 border border-blue-400">
+        <div className="flex flex-col rounded-lg shadow-md py-2">
             {cover && (
                 <Image className="mx-auto md:h-auto" src={cover} width={400} height={200} alt="Post cover image" />
             )}
