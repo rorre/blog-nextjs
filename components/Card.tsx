@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Markdown from 'markdown-to-jsx'
 
 interface CardProps {
     id: string
@@ -20,7 +21,13 @@ export default function Card({ id, title, preview, datetime, cover }: CardProps)
                 <Link href={`/post/${id}`}>
                     <a className="text-lg font-semibold text-blue-400 hover:text-blue-500">{title}</a>
                 </Link>
-                <div className="pt-2">{preview}</div>
+
+                <div className="pt-2">
+                    <Markdown
+                        // eslint-disable-next-line react/no-children-prop
+                        children={preview}
+                    />
+                </div>
             </div>
             <div className="text-gray-400 mt-auto">Posted on {datetime}</div>
         </div>
