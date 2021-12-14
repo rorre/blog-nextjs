@@ -4,8 +4,9 @@ import React from 'react'
 import { Post } from '../utils/types/Post'
 import Index from '../components/Index'
 import { NextSeo } from 'next-seo'
+import Paginator from '../components/Paginator'
 
-function Blog({ posts }: { posts: Post[] }) {
+function Blog({ posts, totalPages }: { posts: Post[]; totalPages: Number }) {
     return (
         <div>
             <NextSeo
@@ -26,7 +27,10 @@ function Blog({ posts }: { posts: Post[] }) {
             <Head>
                 <title>Blog | Index</title>
             </Head>
+
             <Index posts={posts} />
+
+            <Paginator currentPage={1} hasNext={1 < totalPages} />
         </div>
     )
 }
@@ -37,6 +41,7 @@ export async function getStaticProps() {
     return {
         props: {
             posts,
+            totalPages: Math.floor(posts.length / 10),
         },
     }
 }
