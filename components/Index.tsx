@@ -1,6 +1,7 @@
 import { Post } from '../utils/types/Post'
 
 import Card from '../components/Card'
+import React from 'react'
 
 function Index({ posts }: { posts: Post[] }) {
     return (
@@ -11,16 +12,10 @@ function Index({ posts }: { posts: Post[] }) {
 
             {posts.map((post, idx) => {
                 return (
-                    <>
-                        <Card
-                            id={post.Slug}
-                            title={post.Title}
-                            key={'post-' + idx}
-                            preview={post.previewParagraph}
-                            datetime={post.Date}
-                        />
-                        <hr key={'postBar-' + idx} className="border-dashed" />
-                    </>
+                    <React.Fragment key={'post-' + idx}>
+                        <Card id={post.Slug} title={post.Title} preview={post.previewParagraph} datetime={post.Date} />
+                        <hr className="border-dashed" />
+                    </React.Fragment>
                 )
             })}
         </>
