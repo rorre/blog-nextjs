@@ -18,5 +18,6 @@
         @apply bg-gray-800 p-4;
         overflow: auto
     }
+    code { @apply bg-gray-800 px-1 font-normal; }
     td { @apply px-2 }
 }
