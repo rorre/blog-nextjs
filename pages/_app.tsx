@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <div className="bg-gray-900 text-white">
             <Nav />
-            <div className="container py-8 px-8 sm:px-16 md:px-32 lg:px-64">
+            <div className="container mx-auto py-8 px-8 sm:px-16 md:px-32 lg:px-64">
                 <Component {...pageProps} />
             </div>
         </div>
