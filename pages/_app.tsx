@@ -8,6 +8,10 @@ import Router, { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import { useEffect } from 'react'
 
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
+
 function MyApp({ Component, pageProps }: AppProps) {
     const router = useRouter()
     useEffect(() => {
