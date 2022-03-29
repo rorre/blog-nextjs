@@ -6,6 +6,38 @@ import Markdown from 'markdown-to-jsx'
 import Notice from '../../components/post/Notice'
 import { NextSeo } from 'next-seo'
 import { Post as PostType } from '../../utils/types/Post'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus as CodeStyle } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+
+const CodeBlock: React.FC<React.DetailedHTMLProps<React.HTMLAttributes<HTMLPreElement>, HTMLPreElement>> = ({
+    className,
+    children,
+}) => {
+    let lang = 'text' // default monospaced text
+    if (className && className.startsWith('lang-')) {
+        lang = className.replace('lang-', '')
+    }
+    return (
+        <SyntaxHighlighter language={lang} style={CodeStyle}>
+            {children}
+        </SyntaxHighlighter>
+    )
+}
+
+const PreBlock: React.FC<React.DetailedHTMLProps<React.HTMLAttributes<HTMLPreElement>, HTMLPreElement>> = ({
+    children,
+    ...rest
+}) => {
+    // @ts-ignore
+    if ('type' in children && children['type'] === 'code') {
+        return CodeBlock(children['props'])
+    }
+    return (
+        <pre {...rest} className="bg-gray-800 p-4 overflow-auto">
+            {children}
+        </pre>
+    )
+}
 
 const TableWrapper: React.FC<React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableElement>, HTMLTableElement>> = ({
     children,
@@ -23,6 +55,9 @@ export default function Post({ postData }: { postData: PostType }) {
         },
         table: {
             component: TableWrapper,
+        },
+        pre: {
+            component: PreBlock,
         },
     }
 
