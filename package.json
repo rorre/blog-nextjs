@@ -23,7 +23,8 @@
     "react-dom": "^18.0.0",
     "react-syntax-highlighter": "^15.5.0",
     "remark": "^14.0.2",
-    "remark-html": "^15.0.1"
+    "remark-html": "^15.0.1",
+    "strip-markdown": "^5.0.0"
   },
   "devDependencies": {
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",

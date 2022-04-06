@@ -2,15 +2,19 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { PostData } from './types/Post'
+import { remark } from 'remark'
+import strip from 'strip-markdown'
+
+const markCleaner = remark().use(strip)
 
 function getPostIds() {
     const postsDirectory = path.join(process.cwd(), 'posts')
     const filenames = fs.readdirSync(postsDirectory)
-    return filenames.map(fileName => {
+    return filenames.map((fileName) => {
         return {
             params: {
-                id: fileName.replace(/\.md$/, '')
-            }
+                id: fileName.replace(/\.md$/, ''),
+            },
         }
     })
 }
@@ -22,20 +26,23 @@ function getPostData(filename) {
     const fileContents = fs.readFileSync(filePath, 'utf8')
     const matterResult = matter(fileContents)
 
-    const splittedContents = matterResult.content.split("\n")
-    let previewParagraph = ""
+    const splittedContents = matterResult.content.split('\n')
+    let previewParagraph = ''
     for (let i = 0; i < splittedContents.length; i++) {
-        if (splittedContents[i].trim() !== "") {
+        if (splittedContents[i].trim() !== '') {
             previewParagraph = splittedContents[i].trim()
             break
         }
     }
 
+    // Clean all markdown
+    previewParagraph = String(markCleaner.processSync(previewParagraph))
+
     return {
         filePath,
         previewParagraph,
         content: matterResult.content,
-        ...matterResult.data as PostData,
+        ...(matterResult.data as PostData),
     }
 }
 
