@@ -3,7 +3,7 @@ import 'nprogress/nprogress.css'
 import Nav from '../components/Nav'
 
 import { AppProps } from 'next/app'
-import Router, { useRouter } from 'next/router'
+import Router from 'next/router'
 
 import NProgress from 'nprogress'
 import { useEffect } from 'react'
@@ -13,7 +13,6 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
 function MyApp({ Component, pageProps }: AppProps) {
-    const router = useRouter()
     useEffect(() => {
         Router.events.on('routeChangeStart', () => NProgress.start())
         Router.events.on('routeChangeComplete', () => NProgress.done())

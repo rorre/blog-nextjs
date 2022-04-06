@@ -23,13 +23,7 @@ function Blog({ posts, totalPages }: { posts: Post[]; totalPages: Number }) {
                     site: 'https://blog.rorre.xyz/',
                 }}
             />
-
-            <Head>
-                <title>Blog | Index</title>
-            </Head>
-
             <Index posts={posts} />
-
             <Paginator currentPage={1} hasNext={1 < totalPages} />
         </div>
     )

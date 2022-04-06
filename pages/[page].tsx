@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
-import Head from 'next/head'
 import { getPosts } from '../utils/postHelper'
 import { Post } from '../utils/types/Post'
 import { NextSeo } from 'next-seo'
@@ -32,13 +31,7 @@ function BlogPagedIndex({
                     site: 'https://blog.rorre.xyz/',
                 }}
             />
-
-            <Head>
-                <title>Blog | Index</title>
-            </Head>
-
             <Index posts={posts} />
-
             <Paginator currentPage={currentPage} hasNext={1 < totalPages} />
         </div>
     )
