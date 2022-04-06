@@ -31,6 +31,7 @@ function Blog({ posts, totalPages }: { posts: Post[]; totalPages: Number }) {
 
 export async function getStaticProps() {
     const posts = getPosts().slice(0, 10)
+    posts.forEach((post) => (post.content = null))
 
     return {
         props: {
