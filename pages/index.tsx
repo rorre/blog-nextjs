@@ -38,6 +38,7 @@ export async function getStaticProps() {
             posts,
             totalPages: Math.floor(posts.length / 10),
         },
+        revalidate: 60,
     }
 }
 

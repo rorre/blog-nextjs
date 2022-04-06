@@ -48,6 +48,7 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
     const postData = getPostData(params.id + '.md')
     return {
         props: { postData },
+        revalidate: 300,
     }
 }
 

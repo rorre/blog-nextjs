@@ -48,6 +48,7 @@ export const getStaticProps: GetStaticProps = async function ({ params }) {
             posts: currentPosts,
             totalPages: Math.ceil(posts.length / 10),
         },
+        revalidate: 60,
     }
 }
 
