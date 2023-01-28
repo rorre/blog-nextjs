@@ -1,6 +1,13 @@
 import Notice from './Notice'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus as CodeStyle } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import python from 'react-syntax-highlighter/dist/cjs/languages/prism/python';
+
+SyntaxHighlighter.registerLanguage('python3', python);
+SyntaxHighlighter.registerLanguage('python', python);
+SyntaxHighlighter.registerLanguage('py', python);
+SyntaxHighlighter.registerLanguage('jsx', jsx);
 
 const CodeBlock: React.FC<React.DetailedHTMLProps<React.HTMLAttributes<HTMLPreElement>, HTMLPreElement>> = ({
     className,
