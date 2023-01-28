@@ -18,8 +18,10 @@ export default function Card({ id, title, preview, datetime, cover }: CardProps)
             )}
 
             <div className="py-2 text-left">
-                <Link href={`/post/${id}`}>
-                    <a className="text-lg font-semibold text-blue-400 hover:text-blue-500">{title}</a>
+                <Link
+                    href={`/post/${id}`}
+                    className="text-lg font-semibold text-blue-400 hover:text-blue-500">
+                    {title}
                 </Link>
 
                 <div className="pt-2">
@@ -31,5 +33,5 @@ export default function Card({ id, title, preview, datetime, cover }: CardProps)
             </div>
             <div className="text-gray-400 mt-auto">Posted on {datetime}</div>
         </div>
-    )
+    );
 }
