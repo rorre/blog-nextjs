@@ -36,4 +36,7 @@
   td {
     @apply px-2;
   }
+  p > code {
+    @apply rounded-md bg-gray-700 px-1.5 py-0.5;
+  }
 }
