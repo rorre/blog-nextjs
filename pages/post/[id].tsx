@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import Head from "next/head";
 import { getPostData, getPostIds } from "../../utils/postHelper";
 import styles from "../../components/post/post.module.css";
 import Markdown from "markdown-to-jsx";
@@ -30,12 +29,12 @@ export default function Post({ postData }: { postData: PostType }) {
 
       <Markdown
         className={styles.postContent}
-        // eslint-disable-next-line react/no-children-prop
-        children={postData.content}
         options={{
           overrides: mdOverrides,
         }}
-      />
+      >
+        {postData.content}
+      </Markdown>
     </div>
   );
 }
