@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router'
-import BackButton from './BackButton'
+import { useRouter } from "next/router";
+import BackButton from "./BackButton";
 
 export default function Nav() {
-    const router = useRouter()
-    const currentPath = router.pathname
+  const router = useRouter();
+  const currentPath = router.pathname;
 
-    return currentPath !== '/' ? <BackButton /> : <div></div>
+  return currentPath !== "/" ? <BackButton /> : <div></div>;
 }
