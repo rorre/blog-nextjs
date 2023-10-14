@@ -13,7 +13,7 @@ function BlogPagedIndex({
 }: {
     currentPage: number
     posts: Post[]
-    totalPages: Number
+    totalPages: number
 }) {
     return (
         <div>

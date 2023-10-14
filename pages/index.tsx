@@ -6,7 +6,7 @@ import Index from '../components/Index'
 import { NextSeo } from 'next-seo'
 import Paginator from '../components/Paginator'
 
-function Blog({ posts, totalPages }: { posts: Post[]; totalPages: Number }) {
+function Blog({ posts, totalPages }: { posts: Post[]; totalPages: number }) {
     return (
         <div>
             <NextSeo
