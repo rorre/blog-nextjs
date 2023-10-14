@@ -213,6 +213,6 @@ The VPN we choose is Wireguard, not only because it is simple and lightweight, i
 
 This event has actually been the most fun to develop, maintain, and to watch. I certainly learned a lot during the time, and become much more interested in the world of DevOps. Who knows, maybe I'll go into this rabbit hole in other time?
 
-Check out the repositories for [the backend](https://github.com/CTF-Compfest-15/AnD-Platform) and [the backend](https://github.com/CTF-Compfest-15/AnD-Frontend)!
+Check out the repositories for [the backend](https://github.com/CTF-Compfest-15/AnD-Platform) and [the frontend](https://github.com/CTF-Compfest-15/AnD-Frontend)!
 
 Thanks for reading!
