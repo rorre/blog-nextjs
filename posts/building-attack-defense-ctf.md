@@ -1,5 +1,5 @@
 ---
-Title: Building Attack Defense CTF
+Title: "COMPFEST Attack Defense CTF: Managing 10+ Servers and Deployment"
 Date: 2023-10-14 23:00
 Modified: 2023-10-14 23:00
 Category: technology
