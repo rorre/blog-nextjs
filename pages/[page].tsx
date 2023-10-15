@@ -22,14 +22,14 @@ function BlogPagedIndex({
         description="Everything related to osu!, code, or just Ren's life in general."
         openGraph={{
           type: "website",
-          url: "https://blog.rorre.xyz/",
+          url: "https://blog.rorre.me/",
           title: "Blog | Index",
           description:
             "Everything related to osu!, code, or just Ren's life in general.",
         }}
         twitter={{
           cardType: "summary",
-          site: "https://blog.rorre.xyz/",
+          site: "https://blog.rorre.me/",
         }}
       />
       <Index posts={posts} />

@@ -6,7 +6,7 @@ function generateSiteMap(posts: Post[]) {
      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
        <!--We manually set the two URLs we know already-->
        <url>
-           <loc>https://blog.rorre.xyz/</loc>
+           <loc>https://blog.rorre.me/</loc>
            <lastmod>2022-03-26T13:52:58+00:00</lastmod>
            <priority>1.00</priority>
        </url>
@@ -14,7 +14,7 @@ function generateSiteMap(posts: Post[]) {
          .map(({ Slug }) => {
            return `
          <url>
-             <loc>https://blog.rorre.xyz/post/${Slug}</loc>
+             <loc>https://blog.rorre.me/post/${Slug}</loc>
              <priority>0.80</priority>
          </url>
        `;

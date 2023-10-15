@@ -14,13 +14,13 @@ export default function Post({ postData }: { postData: PostType }) {
         description={postData.previewParagraph}
         openGraph={{
           type: "website",
-          url: `https://rorre.xyz/post/${postData.Slug}`,
+          url: `https://blog.rorre.me/post/${postData.Slug}`,
           title: `Blog | ${postData.Title} `,
           description: postData.previewParagraph,
         }}
         twitter={{
           cardType: "summary",
-          site: `https://rorre.xyz/post/${postData.Slug}`,
+          site: `https://blog.rorre.me/post/${postData.Slug}`,
         }}
       />
       <h2 className="text-4xl font-bold">{postData.Title}</h2>
