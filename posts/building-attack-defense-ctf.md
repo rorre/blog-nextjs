@@ -16,7 +16,7 @@ header="Heads Up!" >
 While I try to keep this post to be as easy to digest as possible, it would benefit you most if you have known about computer networking. The post will also be in order of chronological time, kind of like a walkthrough.
 </Notice>
 
-In this post, I will use "we" and "I" interchangibly. "We" represents me as the member of the Technical Commitee Team, whereas "I" represents my personal feeling.
+> I will use "we" and "I" interchangibly. "We" represents me as the member of the Technical Commitee Team, whereas "I" represents my personal feeling.
 
 ## Beginning
 
@@ -212,6 +212,8 @@ The VPN we choose is Wireguard, not only because it is simple and lightweight, i
 ## Closing
 
 This event has actually been the most fun to develop, maintain, and to watch. I certainly learned a lot during the time, and become much more interested in the world of DevOps. Who knows, maybe I'll go into this rabbit hole in other time?
+
+Many thanks to kak Faishol (aka bonceng) once again for the many help he provides while building this platform! Without his help, this platform certainly wouldn't exist.
 
 Check out the repositories for [the backend](https://github.com/CTF-Compfest-15/AnD-Platform) and [the frontend](https://github.com/CTF-Compfest-15/AnD-Frontend)!
 
