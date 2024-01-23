@@ -50,7 +50,7 @@ export default function Notice({
       {faIcon && <FontAwesomeIcon icon={faIcon} size={faIconSize} />}
 
       <div className="text-left">
-        {header && <h4 className="font-bold text-md">{header}</h4>}
+        {header && <h4 className="font-bold text-md m-0">{header}</h4>}
         {children}
         {content && <p>{content}</p>}
       </div>
