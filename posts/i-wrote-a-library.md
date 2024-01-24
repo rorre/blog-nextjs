@@ -18,7 +18,7 @@ So, why does it feel different? I think, it boils down to 2 things:
    This has a few benefits, that is you can declaratively say what data you need and autocomplete based on the context you have for that component. Let's take a look
    at this React example:
 
-   ```tsx
+   ```jsx
    interface UserProfile {
      name: string;
      bio: string;
