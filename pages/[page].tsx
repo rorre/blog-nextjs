@@ -19,13 +19,12 @@ function BlogPagedIndex({
     <div>
       <NextSeo
         title="Blog | Index"
-        description="Everything related to osu!, code, or just Ren's life in general."
+        description="Tech meow rambling about random stuffs."
         openGraph={{
           type: "website",
           url: "https://blog.rorre.me/",
           title: "Blog | Index",
-          description:
-            "Everything related to osu!, code, or just Ren's life in general.",
+          description: "Tech meow rambling about random stuffs.",
         }}
         twitter={{
           cardType: "summary",

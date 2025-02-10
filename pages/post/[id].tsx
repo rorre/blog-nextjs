@@ -23,7 +23,7 @@ export default function Post({ postData }: { postData: PostType }) {
           site: `https://blog.rorre.me/post/${postData.Slug}`,
         }}
       />
-      <h2 className="text-4xl font-bold">{postData.Title}</h2>
+      <h2 className="text-4xl font-bold pb-2">{postData.Title}</h2>
       <p>Posted on {postData.Date}</p>
       <hr className="pb-2" />
 

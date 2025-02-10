@@ -6,8 +6,8 @@ import React from "react";
 function Index({ posts }: { posts: Post[] }) {
   return (
     <>
-      <h2 className="text-4xl font-bold">Ren&apos;s blog</h2>
-      <p>Everything related to osu!, code, or just life in general.</p>
+      <h2 className="text-4xl font-bold pb-2 pt-4">Ren&apos;s blog</h2>
+      <p>Tech meow rambling about random stuffs.</p>
       <hr className="pb-2" />
 
       {posts.map((post, idx) => {
