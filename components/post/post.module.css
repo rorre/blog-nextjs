@@ -44,7 +44,7 @@
   }
 
   img {
-    @apply w-full;
+    @apply mx-auto;
   }
 
   blockquote {
