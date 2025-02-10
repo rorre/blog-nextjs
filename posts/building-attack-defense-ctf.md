@@ -98,7 +98,7 @@ In general, the script does the following shell commands for each command:
 
 In general, this is how the script works:
 
-![Flow for managing service (non-patch)](https://cdn.discordapp.com/attachments/406425673847013378/1162765248424595546/image.png)
+![Flow for managing service (non-patch)](https://d.rorre.me/oD8wOxmO/image%20%285%29.png)
 
 ### Patching Service
 
@@ -123,7 +123,7 @@ That means, you may be able to patch `container/app/main.py`, but not anything e
 
 Once the check is successful, the patch will then be extracted in the container via a `tar` command, replacing all the files.
 
-![Flow for patching](https://cdn.discordapp.com/attachments/406425673847013378/1162766648969793596/image.png)
+![Flow for patching](https://d.rorre.me/bIP8JzdB/image.png)
 
 ### Rotating Flag
 
@@ -141,7 +141,7 @@ For the checker, it will be run in a separate celery worker in the backend serve
 
 It is also possible for the test script to have custom requirements, such as installing `requests`. The test can have a `requirements.txt` file and list all the dependencies to be installed. However, we strictly limit the execution to Python, so any other custom runtime such as sage is not supported.
 
-![Flow for checker](https://cdn.discordapp.com/attachments/406425673847013378/1162781080512901160/image.png)
+![Flow for checker](https://d.rorre.me/dnNEaKjQ/image2.png)
 
 ## Deployment and Networking
 
@@ -190,7 +190,7 @@ Now, I know most of you that already took your network certification or class wo
 
 In the end, the network topology looks similar to this:
 
-![Network topology for COMPFEST 15](https://cdn.discordapp.com/attachments/406425673847013378/1162769701538119700/image.png)
+![Network topology for COMPFEST 15](https://d.rorre.me/go5wRXyY/image3.png)
 
 ### VPN
 
