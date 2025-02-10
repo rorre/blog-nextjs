@@ -25,8 +25,6 @@ This year, the team in COMPFEST wanted to run for attack defense for the finals 
 
 In the middle of the block, we asked [kak Faishol](https://github.com/faishol01) (some of you might know him as "bonceng") for assistance. He accepted to the lengths as far as to build the system from scratch altogether. This was honestly a relief, as we have someone who has more knowledge about the structure of the competition more than us.
 
-<hr />
-
 ## Requirements
 
 As with any projects, there will always be requirements that needs to be met. The requirements were as follows:
@@ -39,8 +37,6 @@ As with any projects, there will always be requirements that needs to be met. Th
 
 The list is pretty small, but it turns out that this has become much more complex than we thought. However, I will only talk about those that I find most interesting.
 
-<hr />
-
 ## Tech Stack
 
 We settled with one backend server and one frontend server. The backend is written in Python with Flask framework, along with Celery as our worker. The frontend is written in Typescript with Next.js framework. We did not go experimental and use cutting-edge framework, as much as I want to when it comes to "side" projects, so we only use frameworks that are proven to be stable.
@@ -48,8 +44,6 @@ We settled with one backend server and one frontend server. The backend is writt
 There is a cache layer that is just a simple redis server managed by Flask-Caching, and our database of choice is PostgresQL. No reason as to why we use Postgres, and considering it is using SQLAlchemy, you might get away with other DBMS as well, though I never personally tested it.
 
 For deployment, we use Docker to containerize the backend. Ansible is also used to privision all the servers, including the VPN and challenge servers. The frontend is deployed to ~~Vercel~~ Railway with no other configuration except changing the environment variables.
-
-<hr />
 
 ## Managing Services and Flags
 
@@ -139,8 +133,6 @@ This one is extremely simple. We create a mount in the container so that `/flag`
 
 During the competition, we noticed a huge CPU spike whenever the checker or flag rotator is running, and one of the server is failing. My hypothesis is that it tries to connect eitherway, but since it could not get any response, it will wait until a specified timeout. Due to this wait time, all of the other tasks are piled up, and now runs at the same time once said timeout is done.
 
-<hr />
-
 ## Checker
 
 Creating a checker can be painful, especially when the services are in a container, and the challenge creator might not know about how the infrastructure works. To relief the pain, kak Faishol creates a custom library to keep things consistent and simple. We named it [fulgens](https://fulgens.readthedocs.io/en/latest/fulgens.html). This library is mandatory for all checkers, as the entry point will give a `fulgens.ChallengeHelper` instance that should be used throughout the test. Not only that, we require the test file to be named exactly `test.py` and have a function `do_check(helper: ChallengeHelper) -> Verdict` declared in the file.
@@ -150,8 +142,6 @@ For the checker, it will be run in a separate celery worker in the backend serve
 It is also possible for the test script to have custom requirements, such as installing `requests`. The test can have a `requirements.txt` file and list all the dependencies to be installed. However, we strictly limit the execution to Python, so any other custom runtime such as sage is not supported.
 
 ![Flow for checker](https://cdn.discordapp.com/attachments/406425673847013378/1162781080512901160/image.png)
-
-<hr />
 
 ## Deployment and Networking
 
@@ -207,8 +197,6 @@ In the end, the network topology looks similar to this:
 The VPN in this context is meant as the gateway for the players to be able to connect to the internal services. We need this not only for assurement that only authorized people can access all the services, but also to anonymize all the requests to the challenge servers. All requests in the network will look like it comes from the same IP address—the VPN server. This is done to minimize selective patching, letting other users do something but not the others.
 
 The VPN we choose is Wireguard, not only because it is simple and lightweight, it also lets us to do IP masquerading easily. Kak Faishol are the one that manages this part of the platform.
-
-<hr />
 
 ## Closing
 
