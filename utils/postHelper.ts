@@ -26,21 +26,8 @@ function getPostData(filename) {
   const fileContents = fs.readFileSync(filePath, "utf8");
   const matterResult = matter(fileContents);
 
-  const splittedContents = matterResult.content.split("\n");
-  let previewParagraph = "";
-  for (let i = 0; i < splittedContents.length; i++) {
-    if (splittedContents[i].trim() !== "") {
-      previewParagraph = splittedContents[i].trim();
-      break;
-    }
-  }
-
-  // Clean all markdown
-  previewParagraph = String(markCleaner.processSync(previewParagraph));
-
   return {
     filePath,
-    previewParagraph,
     content: matterResult.content,
     ...(matterResult.data as PostData),
   };

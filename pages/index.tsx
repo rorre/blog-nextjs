@@ -1,12 +1,10 @@
-import Head from "next/head";
 import { getPosts } from "../utils/postHelper";
 import React from "react";
 import { Post } from "../utils/types/Post";
 import Index from "../components/Index";
 import { NextSeo } from "next-seo";
-import Paginator from "../components/Paginator";
 
-function Blog({ posts, totalPages }: { posts: Post[]; totalPages: number }) {
+function Blog({ posts }: { posts: Post[] }) {
   return (
     <div>
       <NextSeo
@@ -24,19 +22,17 @@ function Blog({ posts, totalPages }: { posts: Post[]; totalPages: number }) {
         }}
       />
       <Index posts={posts} />
-      <Paginator currentPage={1} hasNext={1 < totalPages} />
     </div>
   );
 }
 
 export async function getStaticProps() {
-  const posts = getPosts().slice(0, 10);
+  const posts = getPosts();
   posts.forEach((post) => (post.content = null));
 
   return {
     props: {
       posts,
-      totalPages: Math.floor(posts.length / 10),
     },
     revalidate: 60,
   };

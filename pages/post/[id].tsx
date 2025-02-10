@@ -11,12 +11,12 @@ export default function Post({ postData }: { postData: PostType }) {
     <div>
       <NextSeo
         title={`Blog | ${postData.Title}`}
-        description={postData.previewParagraph}
+        description={postData.Preview}
         openGraph={{
           type: "website",
           url: `https://blog.rorre.me/post/${postData.Slug}`,
           title: `Blog | ${postData.Title} `,
-          description: postData.previewParagraph,
+          description: postData.Preview,
         }}
         twitter={{
           cardType: "summary",

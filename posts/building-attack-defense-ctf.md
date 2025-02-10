@@ -5,6 +5,7 @@ Modified: 2023-10-14 23:00
 Category: technology
 Tags: tech, web, networking
 Slug: building-attack-defense-ctf
+Preview: Building the infrastructure and flow of an Attack-Defense CTF
 ---
 
 Last week, we, the Technical Committee Team for CTF COMPFEST 15 open sourced our attack defense platform (we don't have a name for it yet, though). The platform manages almost everything related to the competition, from privisioning challenges to servers to leaderboard scoring. In this post, I will share my experience building this platform along with others.

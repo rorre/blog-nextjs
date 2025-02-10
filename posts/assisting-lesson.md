@@ -5,6 +5,7 @@ Modified: 2023-02-03 14:00
 Category: misc
 Tags: teaching
 Slug: assisting-lesson
+Preview: Windows sucks, and lots, lots of consideration of deadlines.
 ---
 
 It is my third semester at University, and I am able to apply as a course assistant for any course that I passed (assuming I passed with good score, that is). From all the courses that is available for me to assist, I took Programming Fundamentals 1. I was happy that I got picked to be one of the assistants in that course. While I have never really teached any group of people before, I do have my fair share of helping friends with their code, ranging from newbies to fairly experienced one. Surely, it wouldn't be too bad, no? Especially I am in a faculty where pretty much everyone is expected to be--at least--a little bit knowledgeable with computers.

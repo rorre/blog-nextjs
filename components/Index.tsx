@@ -16,7 +16,7 @@ function Index({ posts }: { posts: Post[] }) {
             key={"post-" + idx}
             id={post.Slug}
             title={post.Title}
-            preview={post.previewParagraph}
+            preview={post.Preview}
             datetime={post.Date}
           />
         ))}

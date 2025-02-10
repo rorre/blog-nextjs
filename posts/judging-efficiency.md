@@ -5,6 +5,7 @@ Modified: 2022-10-19 21:30
 Category: technology
 Tags: tech
 Slug: judging-efficiency
+Preview: How hard is it to measure them accurately?
 ---
 
 Data Structure and Algorithms, a course that sends shivers down any compsci students. In my uni, in any practical assignment, there is an automatic grader that will judge our program based on its predefined test cases, as well as time and memory limit. These test cases are private, just like how you usually do in any competitive programming contests. Due to its secretive nature, usually those who get full mark will be asked by others to try out their test cases, and compare it with their own.

@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <div className="bg-gray-900 text-white">
-      <div className="container max-w-2xl mx-auto px-6 md:px-0">
+      <div className="container max-w-2xl mx-auto px-6 md:px-0 pb-4">
         <Nav />
         <Component {...pageProps} />
       </div>

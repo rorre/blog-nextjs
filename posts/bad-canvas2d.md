@@ -1,10 +1,11 @@
 ---
-Title: 'How I Render Bad Apple With HTML5 Canvas'
+Title: "How I Render Bad Apple With HTML5 Canvas"
 Date: 2022-03-26 21:00
 Modified: 2022-03-26 21:00
 Category: technology
 Tags: tech
 Slug: bad-canvas2d
+Preview: Bad Apple is everywhere, here's my take at it!
 ---
 
 Ah, Bad Apple. Truly a classic piece of art that has been transformed into a lot of medias. From [playing it on Desmos](https://www.youtube.com/watch?v=MVrNn5TuMkY), [Google Maps](https://www.youtube.com/watch?v=r-axdVfM0c0&vl=en), [Microsoft Paint](https://www.youtube.com/watch?v=itbBubDqm70), [File Explorer](https://www.youtube.com/watch?v=7WHA_Gi4nPA), or [CSS Animations](https://www.youtube.com/watch?v=MQbjW2VfaHs). Oh... wait, they are all made by the same person. Well, there is [Bad Apple on apple](https://www.youtube.com/watch?v=rSiOhsGwcII) and [Bad Apple... Among Us](https://www.youtube.com/watch?v=UbaBI-XxGbo). Point is—you can render it everywhere, regardless of which platform you are running it on. In this post, I will talk about how I render Bad Apple on HTML Canvas. Here's the result, though:
@@ -29,9 +30,9 @@ Alright, so let's set up a plan for this. What I had in mind is that we can extr
 
 So, a quick rundown would be something like this:
 
--   Extract all frames to image files
--   Load the images sequentially
--   Track changes for each pixels
+- Extract all frames to image files
+- Load the images sequentially
+- Track changes for each pixels
 
 Pretty simple, right? However, there is an obvious space problem here: consider the video is 480p, since its 4:3, then it would be 640x480. That would require us to render 307200 pixels **in worst case scenario**. Not only that, there would be a lot of keyframes, making our script bloated.
 
@@ -39,10 +40,10 @@ So clearly, we need to cut things down. Let's cut the resolution down to 48p. Th
 
 The final rundown would look something like this:
 
--   Extract all frames to image files
--   Load the images sequentially
--   Resize the image to 64x48
--   Track alpha changes for each pixels
+- Extract all frames to image files
+- Load the images sequentially
+- Resize the image to 64x48
+- Track alpha changes for each pixels
 
 Alright, enough planning, let's code this!
 
@@ -50,9 +51,9 @@ Alright, enough planning, let's code this!
 
 Before we go further, there are a few things you have to prepare:
 
--   Python 3.8
--   Pillow
--   FFmpeg
+- Python 3.8
+- Pillow
+- FFmpeg
 
 ## Extracting Frames
 
@@ -131,10 +132,10 @@ As I have said above, this logic is taken from my other project, [frames2osb](ht
 Finally, we are actually doing the fun part: rendering it.
 Here are some important notes you need to keep in mind:
 
--   The JSON file is big. Don't bother looking at it.
--   Remember the structure: `Point[x][y][]` with `Point` being `[offset, alpha]`.
--   You will be rendering **every frame**.
--   You need to keep track of **last alpha value** due to the keyframe nature.
+- The JSON file is big. Don't bother looking at it.
+- Remember the structure: `Point[x][y][]` with `Point` being `[offset, alpha]`.
+- You will be rendering **every frame**.
+- You need to keep track of **last alpha value** due to the keyframe nature.
 
 With those in mind, let's start with the boilerplate code to get started: (I won't explain tho, you figure out!)
 
@@ -142,17 +143,24 @@ With those in mind, let's start with the boilerplate code to get started: (I won
 
 ```html
 <head>
-    <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="flex-container">
-        <div class="content">
-            <canvas id="badapple" width="640" height="480" style="display: none"></canvas>
-            <button class="btn" onclick="start()" id="playbtn" style="display: none">Play</button>
-            <p id="messageText">Loading...</p>
-        </div>
+  <div class="flex-container">
+    <div class="content">
+      <canvas
+        id="badapple"
+        width="640"
+        height="480"
+        style="display: none"
+      ></canvas>
+      <button class="btn" onclick="start()" id="playbtn" style="display: none">
+        Play
+      </button>
+      <p id="messageText">Loading...</p>
     </div>
-    <script src="index.js"></script>
+  </div>
+  <script src="index.js"></script>
 </body>
 ```
 
@@ -161,51 +169,51 @@ With those in mind, let's start with the boilerplate code to get started: (I won
 ```css
 html,
 body {
-    background: black;
-    height: 100%;
+  background: black;
+  height: 100%;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .flex-container {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn {
-    background: transparent;
-    border: none; /* Remove borders */
-    cursor: pointer; /* Mouse pointer on hover */
+  background: transparent;
+  border: none; /* Remove borders */
+  cursor: pointer; /* Mouse pointer on hover */
 
-    position: absolute;
-    top: 50%; /* position the top  edge of the element at the middle of the parent */
-    left: 50%; /* position the left edge of the element at the middle of the parent */
+  position: absolute;
+  top: 50%; /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
 
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 canvas {
-    aspect-ratio: 4 / 3;
-    margin-bottom: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .content {
-    border: 1px solid white;
-    padding: 1rem;
-    position: relative;
+  border: 1px solid white;
+  padding: 1rem;
+  position: relative;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 ```
 
@@ -217,26 +225,26 @@ Well, we have to download the frames somehow, right? So let's download it! After
 
 ```js
 // Let this be a global variable
-var resJson
+var resJson;
 
 onload = async function () {
-    try {
-        // Make sure frames.json is in your root!
-        let res = await fetch('./frames.json')
-        resJson = await res.json()
+  try {
+    // Make sure frames.json is in your root!
+    let res = await fetch("./frames.json");
+    resJson = await res.json();
 
-        // Clear memory
-        res = null
+    // Clear memory
+    res = null;
 
-        // Set message and let user play
-        messageElem.innerText = 'Loaded.'
-        playBtn.style.display = 'block'
-        canvas.style.display = 'block'
-    } catch {
-        // Something got messed up
-        messageElem.innerText = 'Load failed!'
-    }
-}
+    // Set message and let user play
+    messageElem.innerText = "Loaded.";
+    playBtn.style.display = "block";
+    canvas.style.display = "block";
+  } catch {
+    // Something got messed up
+    messageElem.innerText = "Load failed!";
+  }
+};
 ```
 
 ### Rendering
@@ -244,65 +252,65 @@ onload = async function () {
 Now here comes the actual fun part: rendering it! The plan is to render the canvas **every single frame**, but with the knowledge of keyframes that we have known. To do that, we can iterate through every single pixel and create a 10x10 square that corresponds its alpha value. Simple enough, yeah?
 
 ```js
-var intervalId
+var intervalId;
 
 // The start function will be called by the play button
 function start() {
-    // Loop every 1000 / FPS ms
-    intervalId = setInterval(startDraw, 1000 / 29.8)
+  // Loop every 1000 / FPS ms
+  intervalId = setInterval(startDraw, 1000 / 29.8);
 }
 
 async function startDraw() {
-    // The max offset could differ from yours, mine is on frame 6570
-    // If it exceeds, let's just clear the interval and exit
-    if (currentOffset >= 6570) {
-        clearInterval(intervalId)
-        return
-    }
+  // The max offset could differ from yours, mine is on frame 6570
+  // If it exceeds, let's just clear the interval and exit
+  if (currentOffset >= 6570) {
+    clearInterval(intervalId);
+    return;
+  }
 
-    // Clear and redraw background
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.fillStyle = 'black'
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+  // Clear and redraw background
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    for (let x = 0; x < 64; x++) {
-        for (let y = 0; y < 48; y++) {
-            let pixelDatas = resJson[x][y]
-            let found = false
-            let alpha = -1
+  for (let x = 0; x < 64; x++) {
+    for (let y = 0; y < 48; y++) {
+      let pixelDatas = resJson[x][y];
+      let found = false;
+      let alpha = -1;
 
-            // Find for new alpha value
-            for (let i = 0; i < pixelDatas.length; i++) {
-                let curr = pixelDatas[i]
-                // Frame list is sorted, by this point we will never find it, as the offset is above us.
-                if (curr[0] > currentOffset) break
+      // Find for new alpha value
+      for (let i = 0; i < pixelDatas.length; i++) {
+        let curr = pixelDatas[i];
+        // Frame list is sorted, by this point we will never find it, as the offset is above us.
+        if (curr[0] > currentOffset) break;
 
-                // We found our new alpha value!
-                if (curr[0] == currentOffset) {
-                    alpha = curr[1]
-                    found = true
+        // We found our new alpha value!
+        if (curr[0] == currentOffset) {
+          alpha = curr[1];
+          found = true;
 
-                    // Let's just remove this object from memory, we won't use it anymore.
-                    pixelDatas.splice(i, 1)
-                    break
-                }
-            }
-
-            // Use previous alpha value if not found
-            if (!found) {
-                alpha = lastPixelData[x + '|' + y]
-            }
-
-            // Save our current alpha value for next render
-            lastPixelData[x + '|' + y] = alpha
-
-            // Only draw if alpha is not 0 (not black)
-            if (alpha != 0) {
-                ctx.fillStyle = 'rgba(255, 255, 255, ' + (alpha / 255).toFixed(2) + ')'
-                ctx.fillRect(x * 10, y * 10, 10, 10)
-            }
+          // Let's just remove this object from memory, we won't use it anymore.
+          pixelDatas.splice(i, 1);
+          break;
         }
+      }
+
+      // Use previous alpha value if not found
+      if (!found) {
+        alpha = lastPixelData[x + "|" + y];
+      }
+
+      // Save our current alpha value for next render
+      lastPixelData[x + "|" + y] = alpha;
+
+      // Only draw if alpha is not 0 (not black)
+      if (alpha != 0) {
+        ctx.fillStyle = "rgba(255, 255, 255, " + (alpha / 255).toFixed(2) + ")";
+        ctx.fillRect(x * 10, y * 10, 10, 10);
+      }
     }
+  }
 }
 ```
 
@@ -314,7 +322,7 @@ This was a silly fun project to do for an easter egg in PERAK Fasilkom UI. You c
 
 However, there are still a few improvements that we can try:
 
--   **Maybe use quadtree?** That way there are less drawing commands to be done
--   **Maybe draw the background based on dominant color?** Currently, it's drawing a black background and only draws white pixels. So there is a clear performance issue if a section has too many white pixels.
+- **Maybe use quadtree?** That way there are less drawing commands to be done
+- **Maybe draw the background based on dominant color?** Currently, it's drawing a black background and only draws white pixels. So there is a clear performance issue if a section has too many white pixels.
 
 I'll have to see what I can do later on. But for now, thanks for reading! Have a nice day.

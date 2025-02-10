@@ -5,6 +5,7 @@ Modified: 2021-09-18 20:00
 Category: technology
 Tags: tech, anon, menfess, anonymity
 Slug: anon-trust
+Preview: There is a bit of a problem with Indonesian Twitter's menfess system...
 ---
 
 The internet has its own miracle, because no one really knows who you are in the real world (well, unless you deanonymize yourself, of course). By default, what people see is just another person on the internet, and that's all. But, there is a bit of a problem with Indonesian Twitter's menfess system...

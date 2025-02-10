@@ -5,6 +5,7 @@ Modified: 2024-01-23 23:00
 Category: technology
 Tags: tech, web, html, library, python
 Slug: i-wrote-a-library
+Preview: In an attempt to bring the a feel of modern WebDev to Python, I caused hell
 ---
 
 Around new year, I was bored outside my usual job and games, plus I still don't have any classes to attend since we're still on our semester. So, I thought of going back again to my previous projects.

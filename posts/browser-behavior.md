@@ -1,10 +1,11 @@
 ---
-Title: 'Browser Behavior: Form Problem'
+Title: "Browser Behavior: Form Problem"
 Date: 2021-08-20 15:00
 Modified: 2021-08-20 15:00
 Category: technology
 Tags: tech, webdev, web, browser
 Slug: browser-behavior
+Preview: Browsers and their inconsistensies...
 ---
 
 Web developing sucks. We all know that, and well, that doesnt just apply to web development, but to a lot of things in technology. However I would like to talk about this simple browser behavior inconsistency that occured back when I was registering for my uni's orientation program.
@@ -29,9 +30,9 @@ Here, we have a form that looks like following:
 
 ```html
 <form id="exForm">
-    <label for="name">Name:</label><br />
-    <input type="text" id="name" name="name" /><br /><br />
-    <button id="submitBtn" type="submit">Submit</button>
+  <label for="name">Name:</label><br />
+  <input type="text" id="name" name="name" /><br /><br />
+  <button id="submitBtn" type="submit">Submit</button>
 </form>
 ```
 
@@ -40,19 +41,19 @@ Here, we have a form that looks like following:
 With the following JS script:
 
 ```js
-var nameInput = document.getElementById('name')
-var submitBtn = document.getElementById('submitBtn')
-var form = document.getElementById('exForm')
-form.onsubmit = onFormSubmit
+var nameInput = document.getElementById("name");
+var submitBtn = document.getElementById("submitBtn");
+var form = document.getElementById("exForm");
+form.onsubmit = onFormSubmit;
 
-submitBtn.addEventListener('click', function (ev) {
-    this.setAttribute('disabled', true)
-})
+submitBtn.addEventListener("click", function (ev) {
+  this.setAttribute("disabled", true);
+});
 
 function onFormSubmit(e) {
-    e.preventDefault()
-    e.stopPropagation()
-    alert(`Hello, ${nameInput.value}!`)
+  e.preventDefault();
+  e.stopPropagation();
+  alert(`Hello, ${nameInput.value}!`);
 }
 ```
 

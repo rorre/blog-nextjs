@@ -5,10 +5,10 @@ export interface PostData {
   Category: string;
   Tags: string[];
   Slug: string;
+  Preview: string;
 }
 
 export interface Post extends PostData {
   filePath: string;
-  previewParagraph: string;
   content: string;
 }
