@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "markdown-to-jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 interface CardProps {
   id: string;
@@ -18,33 +20,37 @@ export default function Card({
   cover,
 }: CardProps) {
   return (
-    <div className="flex flex-col rounded-lg shadow-md py-2">
-      {cover && (
-        <Image
-          className="mx-auto md:h-auto"
-          src={cover}
-          width={400}
-          height={200}
-          alt="Post cover image"
-        />
-      )}
+    <Link href={`/post/${id}`}>
+      <div className="flex flex-row border border-gray-500 rounded-xl opacity-80 hover:opacity-100 cursor-pointer transition duration-300 ease-in-out">
+        <div className="flex flex-col rounded-lg shadow-md basis-4/5">
+          {cover && (
+            <Image
+              className="mx-auto md:h-auto"
+              src={cover}
+              width={400}
+              height={200}
+              alt="Post cover image"
+            />
+          )}
 
-      <div className="py-2 text-left">
-        <Link
-          href={`/post/${id}`}
-          className="text-lg font-semibold text-blue-400 hover:text-blue-500"
-        >
-          {title}
-        </Link>
+          <div className="flex flex-col gap-0.5 py-3 text-left pl-4">
+            <div className="text-gray-400 text-sm">{datetime}</div>
 
-        <div className="pt-2">
-          <Markdown
-            // eslint-disable-next-line react/no-children-prop
-            children={preview}
-          />
+            <strong>{title}</strong>
+
+            <div className="text-sm text-gray-400">
+              <Markdown
+                // eslint-disable-next-line react/no-children-prop
+                children={preview}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center basis-1/5">
+          <FontAwesomeIcon icon={faChevronRight} size="1x" />
         </div>
       </div>
-      <div className="text-gray-400 mt-auto">Posted on {datetime}</div>
-    </div>
+    </Link>
   );
 }

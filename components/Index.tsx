@@ -10,19 +10,17 @@ function Index({ posts }: { posts: Post[] }) {
       <p>Tech meow rambling about random stuffs.</p>
       <hr className="pb-2" />
 
-      {posts.map((post, idx) => {
-        return (
-          <React.Fragment key={"post-" + idx}>
-            <Card
-              id={post.Slug}
-              title={post.Title}
-              preview={post.previewParagraph}
-              datetime={post.Date}
-            />
-            <hr className="border-dashed" />
-          </React.Fragment>
-        );
-      })}
+      <div className="flex flex-col gap-2">
+        {posts.map((post, idx) => (
+          <Card
+            key={"post-" + idx}
+            id={post.Slug}
+            title={post.Title}
+            preview={post.previewParagraph}
+            datetime={post.Date}
+          />
+        ))}
+      </div>
     </>
   );
 }
