@@ -1,5 +1,5 @@
 .postContent {
-  @apply space-y-4;
+  @apply space-y-4 leading-7 text-gray-300;
 
   h1,
   h2,
@@ -21,14 +21,34 @@
     @apply text-lg;
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply border-b-2 border-gray-500 pb-4;
+  }
+
   ol {
     @apply list-decimal ml-8;
   }
   ul {
     @apply list-disc ml-8;
   }
+
+  ol * {
+    @apply space-y-2;
+  }
+
+  ul * {
+    @apply space-y-2;
+  }
+
+  img {
+    @apply w-full;
+  }
+
   blockquote {
-    @apply border-l-4 ml-8 pl-4 border-gray-500;
+    @apply border-l-4 pl-4 border-gray-500;
   }
   a {
     @apply text-blue-500 hover:text-blue-700;

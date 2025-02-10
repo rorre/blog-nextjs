@@ -28,7 +28,8 @@ export default function Post({ postData }: { postData: PostType }) {
       <hr className="pb-2" />
 
       <Markdown
-        className="prose prose-invert max-w-none"
+        // className="prose prose-invert max-w-none"
+        className={styles.postContent}
         options={{
           overrides: mdOverrides,
         }}
