@@ -9,10 +9,10 @@ function Greeting() {
       <h1 className="py-4 text-3xl font-bold">Hello!</h1>
       <div className="flex flex-col gap-2">
         <p className="text-lg">
-          I&apos;m Ren, and welcome to my space! I&apos;m a CS undergrad,
-          working as a pentester or red teamer by day, software engineer on the
-          other time! This is where I post my rambles, be it technical, or
-          simply talking about life.
+          I&apos;m Ren, and welcome to my space! I&apos;m a Computer Science
+          fresh graduate, working as a pentester or red teamer by day, software
+          engineer on the other time! This is where I post my rambles, be it
+          technical, or simply talking about life.
         </p>
 
         <Link href="/about">
