@@ -3,12 +3,13 @@ import Link from "next/link";
 import Markdown from "markdown-to-jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { formatDate } from "../../utils/date";
 
 interface CardProps {
   id: string;
   title: string;
   preview: string;
-  datetime: Date;
+  datetime: string;
   cover?: string;
 }
 
@@ -20,7 +21,7 @@ export default function Card({
   cover,
 }: CardProps) {
   return (
-    <Link href={`/post/${id}`}>
+    <Link href={`/blog/post/${id}`}>
       <div className="flex flex-row border border-gray-500 rounded-xl opacity-80 hover:opacity-100 cursor-pointer transition duration-300 ease-in-out">
         <div className="flex flex-col rounded-lg shadow-md basis-4/5">
           {cover && (
@@ -34,7 +35,9 @@ export default function Card({
           )}
 
           <div className="flex flex-col gap-0.5 py-3 text-left pl-4">
-            <div className="text-gray-400 text-sm">{datetime}</div>
+            <div className="text-gray-400 text-sm">
+              {formatDate(new Date(datetime))}
+            </div>
 
             <strong>{title}</strong>
 

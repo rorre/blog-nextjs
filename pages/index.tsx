@@ -1,33 +1,21 @@
 import { getPosts } from "../utils/postHelper";
 import React from "react";
 import { Post } from "../utils/types/Post";
-import Index from "../components/Index";
 import { NextSeo } from "next-seo";
+import Greeting from "../components/home/Greeting";
+import RecentPosts from "../components/home/RecentPosts";
 
-function Blog({ posts }: { posts: Post[] }) {
+function IndexPage({ posts }: { posts: Post[] }) {
   return (
     <div>
-      <NextSeo
-        title="Blog | Index"
-        description="Tech meow rambling about random stuffs."
-        openGraph={{
-          type: "website",
-          url: "https://blog.rorre.me/",
-          title: "Blog | Index",
-          description: "Tech meow rambling about random stuffs.",
-        }}
-        twitter={{
-          cardType: "summary",
-          site: "https://blog.rorre.me/",
-        }}
-      />
-      <Index posts={posts} />
+      <Greeting />
+      <RecentPosts posts={posts} />
     </div>
   );
 }
 
 export async function getStaticProps() {
-  const posts = getPosts();
+  const posts = getPosts().slice(0, 5);
   posts.forEach((post) => (post.content = null));
 
   return {
@@ -38,4 +26,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Blog;
+export default IndexPage;

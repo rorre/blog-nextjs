@@ -1,7 +1,7 @@
 export interface PostData {
   Title: string;
-  Date: Date;
-  Modified: Date;
+  Date: string;
+  Modified: string;
   Category: string;
   Tags: string[];
   Slug: string;

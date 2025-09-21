@@ -1,6 +1,5 @@
 import "tailwindcss/tailwind.css";
 import "nprogress/nprogress.css";
-import Nav from "../components/Nav";
 
 import { AppProps } from "next/app";
 import Router from "next/router";
@@ -10,6 +9,8 @@ import { useEffect } from "react";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { DefaultSeo } from "next-seo";
+import Navbar from "../components/base/Navbar";
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -20,12 +21,30 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white">
-      <div className="container max-w-2xl mx-auto px-6 md:px-0 pb-4">
-        <Nav />
-        <Component {...pageProps} />
+    <>
+      <DefaultSeo
+        defaultTitle="Ren's Space"
+        titleTemplate="%s | Ren's Space"
+        description="Tech meow rambling about random stuffs."
+        openGraph={{
+          type: "website",
+          url: "https://rorre.me/",
+          title: "Ren's Space",
+          description: "Tech meow rambling about random stuffs.",
+        }}
+        twitter={{
+          cardType: "summary",
+          site: "https://rorre.me/",
+        }}
+      />
+
+      <div className="bg-gray-900 text-white min-h-screen">
+        <div className="container max-w-2xl mx-auto px-6 md:px-0 py-8 flex flex-col gap-4">
+          <Navbar />
+          <Component {...pageProps} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

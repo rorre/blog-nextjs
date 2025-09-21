@@ -1,31 +1,36 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import { getPostData, getPostIds } from "../../utils/postHelper";
-import styles from "../../components/post/post.module.css";
+import { getPostData, getPostIds } from "../../../utils/postHelper";
+import styles from "../../../components/post/post.module.css";
 import Markdown from "markdown-to-jsx";
 import { NextSeo } from "next-seo";
-import { Post as PostType } from "../../utils/types/Post";
-import { mdOverrides } from "../../components/post/Overrides";
+import { Post as PostType } from "../../../utils/types/Post";
+import { mdOverrides } from "../../../components/post/Overrides";
+import { formatDate } from "../../../utils/date";
 
 export default function Post({ postData }: { postData: PostType }) {
   return (
     <div>
       <NextSeo
-        title={`Blog | ${postData.Title}`}
+        title={postData.Title}
         description={postData.Preview}
         openGraph={{
           type: "website",
-          url: `https://blog.rorre.me/post/${postData.Slug}`,
-          title: `Blog | ${postData.Title} `,
+          url: `https://rorre.me/blog/post/${postData.Slug}`,
+          title: `${postData.Title} | Ren's Space`,
           description: postData.Preview,
         }}
         twitter={{
           cardType: "summary",
-          site: `https://blog.rorre.me/post/${postData.Slug}`,
+          site: `https://rorre.me/blog/post/${postData.Slug}`,
         }}
       />
-      <h2 className="text-4xl font-bold pb-2">{postData.Title}</h2>
-      <p>Posted on {postData.Date}</p>
-      <hr className="pb-2" />
+
+      <div className="flex flex-col gap-2">
+        <h2 className="text-3xl font-bold">{postData.Title}</h2>
+        <p>{formatDate(new Date(postData.Date))}</p>
+      </div>
+
+      <hr className="my-4" />
 
       <Markdown
         // className="prose prose-invert max-w-none"
