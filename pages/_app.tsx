@@ -7,11 +7,18 @@ import Router from "next/router";
 import NProgress from "nprogress";
 import { useEffect } from "react";
 
-import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { DefaultSeo } from "next-seo";
 import Navbar from "../components/base/Navbar";
+import {
+  fas,
+  faExclamationTriangle,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
+
+const { config, library } = require("@fortawesome/fontawesome-svg-core");
 config.autoAddCss = false;
+library.add(fas, faInfoCircle, faExclamationTriangle);
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {

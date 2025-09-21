@@ -1,13 +1,6 @@
-import { IconProp, library, SizeProp } from "@fortawesome/fontawesome-svg-core";
+import { IconProp, SizeProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faExclamationTriangle,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-
-library.add(faInfoCircle);
-library.add(faExclamationTriangle);
 
 interface NoticeProps extends React.HTMLProps<React.ReactElement> {
   faIcon: IconProp;
@@ -15,15 +8,17 @@ interface NoticeProps extends React.HTMLProps<React.ReactElement> {
   noticeType: string;
   header: string;
   content: string;
+  className: string;
 }
 
 export default function Notice({
   faIcon,
-  faIconSize = "3x",
+  faIconSize = "2x",
   noticeType,
   header,
   content,
   children,
+  className,
 }: NoticeProps) {
   let colorClass = "";
 
@@ -43,14 +38,16 @@ export default function Notice({
 
   return (
     <div
-      className={`flex flex-col md:flex-row items-center justify-center
-                        p-4 rounded-lg shadow-md border ${colorClass}
-                        space-x-4 space-y-4 md:space-y-0`}
+      className={`flex flex-col p-4 rounded-lg shadow-md border ${colorClass} gap-4`}
     >
-      {faIcon && <FontAwesomeIcon icon={faIcon} size={faIconSize} />}
+      {header && (
+        <div className="flex flex-row gap-4 items-center">
+          {faIcon && <FontAwesomeIcon icon={faIcon} size={faIconSize} />}
+          {header && <strong className="font-bold text-xl">{header}</strong>}
+        </div>
+      )}
 
-      <div className="text-left">
-        {header && <h4 className="font-bold text-md m-0">{header}</h4>}
+      <div className={`text-left flex flex-col gap-2 ${className}`}>
         {children}
         {content && <p>{content}</p>}
       </div>
