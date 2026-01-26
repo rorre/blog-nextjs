@@ -1,16 +1,22 @@
 ---
-Title: Authenticating Without Knowing The Password
+Title: A Closer Look at Client Side Hashing
 Date: 2025-09-21 17:00
-Modified: 2025-09-21 17:00
+Modified: 2026-01-26 21:00
 Category: technology
 Tags: tech, security, hash, password
-Slug: auth-no-pw
-Preview: Authentication is hard, but what's easy is passing the user's hash!
+Slug: client-side-hashing
+Preview: Authentication is hard, really hard!
 ---
 
 Authentication is hard. Really hard. There is a reason why authentication libraries exist, and why there are a lot of them. Though, really, the flow is basically the same: User provides credentials (username-password pair, OAuth, etc) -> Server validates it -> User gains their session (Session cookie, JWT tokens, or anything like that). However, the trick is always in the details. Under really specific circumstances, you might even be able to authenticate with just the password's hash, without knowing the password at all!
 
 This technique is called [Pass-the-Hash](https://en.wikipedia.org/wiki/Pass_the_hash) (PtH), where an attacker is able to authenticate with only the user's hash and gain access to the system. This attack method is often used in Windows red team scenarios, but this scenario can be used everywhere, what we need to understand is the concept. So, let's try to understand this in context of a web application!
+
+<Notice header="Info" faIcon="fa-info-circle" noticeType="info">
+<p>This blog post has been slightly edited because Google marked my domain as malicious and thinking that I promote dangerous acts. Therefore:</p>
+<p>You should NEVER, EVER DO THIS outside of lab or legal environment (for example, authorized penetration testing).</p>
+<p>This post has been extremely simplified to be used as educational purposes.</p>
+</Notice>
 
 ## The Credentials
 
@@ -160,5 +166,4 @@ So, what can we learn from this?
 - Don't forget to exclude certain fields from your API responses
 - [Salt your password!!!!!!!!!!!](https://en.wikipedia.org/wiki/Salt_%28cryptography%29)
 
-If you've already done this before and felt dumb, don't worry. I mean,
-[we can attack Windows machines with the same technique, using their NT hash](https://www.thehacker.recipes/ad/movement/ntlm/) :p
+Thank you for reading!
