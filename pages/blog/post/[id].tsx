@@ -6,6 +6,7 @@ import { NextSeo } from "next-seo";
 import { Post as PostType } from "../../../utils/types/Post";
 import { mdOverrides } from "../../../components/post/Overrides";
 import { formatDate } from "../../../utils/date";
+import Giscus from '@giscus/react';
 
 export default function Post({ postData }: { postData: PostType }) {
   return (
@@ -41,6 +42,23 @@ export default function Post({ postData }: { postData: PostType }) {
       >
         {postData.content}
       </Markdown>
+
+      <hr className="my-4" />
+
+      <Giscus
+        repo="rorre/blog-nextjs"
+        repoId="MDEwOlJlcG9zaXRvcnkzODE5MjQwMjM="
+        category="Announcements"
+        categoryId="DIC_kwDOFsOyt84C2VAw"
+        mapping="pathname"
+        strict="0"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="bottom"
+        theme="preferred_color_scheme"
+        lang="en"
+        loading="lazy"
+      />
     </div>
   );
 }
